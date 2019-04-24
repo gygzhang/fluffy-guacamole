@@ -1,3 +1,7 @@
-import read_brainweb
+from read_brainweb import read_brainweb
+
 #for training set ... not complete
-read_brainweb.read_brain_web("train","D:\ml\\brainweb\phantom_1.0mm_normal_crisp.rawb",75)
+if __name__ == "__main__":
+    src = ""
+    read_brainweb("trainning set","D:\ml\\brainweb\phantom_1.0mm_normal_crisp.rawb",85)
+    read_brainweb("test set", "D:\ml\\brainweb\phantom_1.0mm_normal_crisp.rawb", 87)
