@@ -3,7 +3,7 @@ import numpy as np
 import sys
 import cv2
 from matplotlib import pyplot as plt
-
+import re
 
 def read_brainweb(path,file,num_z):
     with open(file, "rb") as rawbs:
@@ -25,8 +25,11 @@ def read_brainweb(path,file,num_z):
         #normalize the image to 0-255
         cv2.normalize(img_write, img_write, 0, 255, cv2.NORM_MINMAX)
 
-        plt.imshow(img_write, cmap='gray', interpolation='bicubic')
-        plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
-        plt.show()
-
-        cv2.imwrite(path+"\\"+str(num_z)+".png", img_write)
+       # plt.imshow(img_write, cmap='gray', interpolation='bicubic')
+       # plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
+        #plt.show()
+        fn1 = re.split("\\\\",file)[-1]
+        sip = re.split("_",fn1)
+        filename = sip[0]+"_"+sip[-2]+"_"
+        #print(sip)
+        cv2.imwrite(path+"\\"+filename+str(num_z)+".png", img_write)

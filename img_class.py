@@ -1,7 +1,12 @@
 from read_brainweb import read_brainweb
-
+import os
 #for training set ... not complete
 if __name__ == "__main__":
     src = ""
-    read_brainweb("trainning set","D:\ml\\brainweb\phantom_1.0mm_normal_crisp.rawb",85)
-    read_brainweb("test set", "D:\ml\\brainweb\phantom_1.0mm_normal_crisp.rawb", 87)
+    path = r"D:\\MLDLRL\\brainweb\\data_download\\"
+    rfiles = os.listdir(path)
+    print(rfiles)
+    for f in rfiles:
+        for i in range(30):
+            read_brainweb("training set",path+f,i*3)
+            read_brainweb("test set", path+f, i*3+1)

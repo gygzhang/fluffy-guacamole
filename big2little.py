@@ -5,7 +5,7 @@ def big2little(src,dst):
     byte = 0
     fs = open(dst, "wb")
     f = open(src, "rb")
-    # == and is has g great difference
+    # == and is have g great difference
     while byte != b'':
         byte = f.read(1);
         stack.append(byte)
