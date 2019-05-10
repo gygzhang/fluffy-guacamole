@@ -76,9 +76,8 @@ def download():
         r = http.request("GET",download_url)
         filename = re.findall("filename", str(r.headers['Content-disposition']))
         filename = re.split(r"=", str(r.headers['Content-disposition']))[1]
-        pathname = "D:\\MLDLRL\\brainweb\\data_download\\"
-        if pathname in os.listdir("D:\\MLDLRL\\brainweb\\"):
-            os.mkdir(pathname)
+        pathname = os.getcwd()+"\\dataset\\"
+
         with open(pathname + filename, 'wb') as fw:
             fw.write(r.data)
 
@@ -88,6 +87,7 @@ def download():
 
 
         decps_name = pathname + filename
+        os.remove(decps_name)
         decps_name = decps_name.split('.gz')[0]
 
         output = open(decps_name, 'wb')
@@ -98,6 +98,9 @@ def download():
     print(r.headers['Content-disposition'])
 
     print(filename)
+
+
+
     #filename =''
     #for v in data:
     #    filename+=v+'&'
@@ -116,3 +119,5 @@ def download():
     '''
     https://brainweb.bic.mni.mcgill.ca/cgi/brainweb1?do_download_alias=T1+ICBM+normal+1mm+pn3+rf20&format_value=raw_byte&zip_value=gnuzip&who_name=&who_institution=&who_email=&download_for_real=%5BStart+download%21%5D
     '''
+
+    return pathname
